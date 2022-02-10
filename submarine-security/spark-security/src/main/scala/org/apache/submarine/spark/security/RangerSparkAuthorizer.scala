@@ -216,7 +216,7 @@ object RangerSparkAuthorizer {
                 case _ => SparkAccessType.SELECT
               }
             case SHOWDATABASES | SWITCHDATABASE | DESCDATABASE| SHOWTABLES => SparkAccessType.USE
-            case TRUNCATETABLE => SparkAccessType.UPDATE
+            case TRUNCATETABLE | UPDATE => SparkAccessType.UPDATE
             case _ => SparkAccessType.NONE
           }
       }

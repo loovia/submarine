@@ -50,6 +50,7 @@ object SparkOperationType extends Enumeration {
       LOAD,
       MSCK,
       QUERY,
+      UPDATE,
       SHOWCONF,
       SHOW_CREATETABLE,
       SHOWCOLUMNS,

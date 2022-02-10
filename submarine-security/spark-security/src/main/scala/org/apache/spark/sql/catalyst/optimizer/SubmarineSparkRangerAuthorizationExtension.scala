@@ -135,11 +135,12 @@ case class SubmarineSparkRangerAuthorizationExtension(spark: SparkSession)
 
         case e: ExplainCommand => toOperationType(e.logicalPlan)
 
-        case _: InsertIntoDataSourceCommand => QUERY
-        case p if p.nodeName == "InsertIntoDataSourceDirCommand" => QUERY
+        case _: InsertIntoDataSourceCommand => UPDATE
+        case p if p.nodeName == "InsertIntoDataSourceDirCommand" => UPDATE
         case _: InsertIntoHadoopFsRelationCommand => CREATETABLE_AS_SELECT
-        case p if p.nodeName == "InsertIntoHiveDirCommand" => QUERY
-        case p if p.nodeName == "InsertIntoHiveTable" => QUERY
+        case p if p.nodeName == "InsertIntoHiveDirCommand" => UPDATE
+        // case p if p.nodeName == "InsertIntoHiveTable" => UPDATE
+        case p if p.nodeName == "InsertIntoHiveTable" => CREATETABLE_AS_SELECT
 
         case _: LoadDataCommand => LOAD
 
