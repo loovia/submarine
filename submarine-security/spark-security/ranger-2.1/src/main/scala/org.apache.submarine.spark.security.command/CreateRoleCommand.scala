@@ -26,12 +26,12 @@ import scala.util.control.NonFatal
 import org.apache.hadoop.security.UserGroupInformation
 import org.apache.ranger.plugin.model.RangerRole
 import org.apache.spark.sql.{Row, SparkSession}
-import org.apache.spark.sql.execution.command.RunnableCommand
+import org.apache.spark.sql.execution.command.LeafRunnableCommand
 
 import org.apache.submarine.spark.security.{RangerSparkAuditHandler, RangerSparkPlugin, SparkAccessControlException}
 
 
-case class CreateRoleCommand(roleName: String) extends RunnableCommand {
+case class CreateRoleCommand(roleName: String) extends LeafRunnableCommand {
   import CommandUtils._
   override def run(sparkSession: SparkSession): Seq[Row] = {
 

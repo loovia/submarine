@@ -25,12 +25,12 @@ import scala.util.control.NonFatal
 import org.apache.hadoop.security.UserGroupInformation
 import org.apache.spark.sql.{Row, SparkSession}
 import org.apache.spark.sql.catalyst.expressions.{Attribute, AttributeReference}
-import org.apache.spark.sql.execution.command.RunnableCommand
+import org.apache.spark.sql.execution.command.LeafRunnableCommand
 import org.apache.spark.sql.types.StringType
 
 import org.apache.submarine.spark.security.{RangerSparkAuditHandler, RangerSparkPlugin, SparkAccessControlException}
 
-case class ShowRolesCommand () extends RunnableCommand {
+case class ShowRolesCommand () extends LeafRunnableCommand {
 
   override def output: Seq[Attribute] =
     Seq(AttributeReference("Role Name", StringType, nullable = false)())

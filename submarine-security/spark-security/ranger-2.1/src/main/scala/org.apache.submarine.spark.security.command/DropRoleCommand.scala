@@ -23,11 +23,11 @@ import scala.util.control.NonFatal
 
 import org.apache.hadoop.security.UserGroupInformation
 import org.apache.spark.sql.{Row, SparkSession}
-import org.apache.spark.sql.execution.command.RunnableCommand
+import org.apache.spark.sql.execution.command.LeafRunnableCommand
 
 import org.apache.submarine.spark.security.{RangerSparkAuditHandler, RangerSparkPlugin, SparkAccessControlException}
 
-case class DropRoleCommand(roleName: String) extends RunnableCommand {
+case class DropRoleCommand(roleName: String) extends LeafRunnableCommand {
   override def run(sparkSession: SparkSession): Seq[Row] = {
     CommandUtils.validateRoleName(roleName)
 
