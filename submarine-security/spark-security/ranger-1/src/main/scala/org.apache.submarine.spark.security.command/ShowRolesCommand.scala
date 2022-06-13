@@ -20,9 +20,9 @@
 package org.apache.submarine.spark.security.command
 
 import org.apache.spark.sql.{Row, SparkSession}
-import org.apache.spark.sql.execution.command.RunnableCommand
+import org.apache.spark.sql.execution.command.LeafRunnableCommand
 
-case class ShowRolesCommand () extends RunnableCommand {
+case class ShowRolesCommand () extends LeafRunnableCommand {
   override def run(sparkSession: SparkSession): Seq[Row] = {
     throw new UnsupportedOperationException("SHOW ROLES")
   }
